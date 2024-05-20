@@ -56,10 +56,20 @@ export const crearReserva = async (req: CustomRequest, res: Response) => {
 
 export const getReservas = async (req: Request, res: Response) => {
   try {
-    const reservas = await ReservaModel.find().populate({
-      path: "usuario",
-      select: "nombre email",
-    });
+    const reservas = await ReservaModel.find()
+      .populate({
+        path: "usuario",
+        select: "nombre email",
+      })
+      .populate({
+        path: "servicio",
+        select: "nombre descripcion apertura cierre dias encargado estado",
+      })
+      .populate({
+        path: "residente",
+        select: "nombre apellido identificacion celular correo apartamento",
+      });
+
     res.json({
       ok: true,
       reservas,

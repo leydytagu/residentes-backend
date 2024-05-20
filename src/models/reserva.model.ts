@@ -1,14 +1,6 @@
 import { Model, Schema, model } from "mongoose";
 
 const ReservaSchema = new Schema({
-  residente: {
-    type: String,
-    required: true,
-  },
-  servicio: {
-    type: String,
-    required: true,
-  },
   hora: {
     type: String,
     required: true,
@@ -20,6 +12,9 @@ const ReservaSchema = new Schema({
     type: Date,
     default: Date.now(),
   },
+
+  residente: { type: Schema.Types.ObjectId, ref: "residente", required: true },
+  servicio: { type: Schema.Types.ObjectId, ref: "servicio", required: true },
   usuario: { type: Schema.Types.ObjectId, ref: "residente", required: true },
 });
 
