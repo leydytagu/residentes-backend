@@ -1,20 +1,19 @@
-import { InteraccionModel } from "./models/interaccion.model";
 import express, { Application, Request, Response } from "express";
 import { dbConnection } from "./database/connection";
 import cors from "cors";
-import usuarioRoutes from "./routes/usuario.route";
-import productoRoutes from "./routes/producto.route";
+import residenteRoutes from "./routes/residente.route";
+import servicioRoutes from "./routes/servicio.route";
+import reservasRoutes from "./routes/reservas.route";
 import authRoutes from "./routes/auth.route";
-import interaccionRoutes from "./routes/interaccion.route";
 
 class Server {
   private app: Application;
   private port: string;
   private apiPaths = {
-    usuario: "/api/v1/usuario",
-    producto: "/api/v1/producto",
+    residente: "/api/v1/residente",
+    servicio: "/api/v1/servicio",
+    reserva: "/api/v1/reserva",
     login: "/api/v1/login",
-    interaccion: "/api/v1/interaccion",
   };
 
   constructor() {
@@ -47,10 +46,10 @@ class Server {
   }
 
   routes(): void {
-    this.app.use(this.apiPaths.usuario, usuarioRoutes);
-    this.app.use(this.apiPaths.producto, productoRoutes);
+    this.app.use(this.apiPaths.residente, residenteRoutes);
+    this.app.use(this.apiPaths.servicio, servicioRoutes);
+    this.app.use(this.apiPaths.reserva, reservasRoutes);
     this.app.use(this.apiPaths.login, authRoutes);
-    this.app.use(this.apiPaths.interaccion, interaccionRoutes);
   }
 
   listen(): void {
