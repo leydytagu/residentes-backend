@@ -16,7 +16,7 @@ router.post(
   validateJWT,
   [check("residente", "El residente es obligatoria").not().isEmpty()],
   [check("servicio", "El servicio es obligatoria").not().isEmpty()],
-  [check("hora", "La ra es obligatoria").not().isEmpty()],
+  [check("hora", "La hora es obligatoria").not().isEmpty()],
   crearReserva
 );
 router.get("/", getReservas);
