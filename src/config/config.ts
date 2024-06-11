@@ -41,7 +41,7 @@ export const config: any = {
     email: {
       port: process.env.PORT_EMAIL_DESARROLLO,
       host: process.env.HOST_EMAIL_DESARROLLO,
-      email: process.env.USER_EMALI_DESARROLLO,
+      email: process.env.USER_EMAIL_DESARROLLO,
       password: process.env.PASS_EMAIL_DESARROLLO,
       from: process.env.FROM_EMAIL_DESARROLLO,
     },
