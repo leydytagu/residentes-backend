@@ -39,7 +39,14 @@ router.post(
     (check("celular", "El celular es obligatorio").not().isEmpty(),
     validateFields),
   ],
-  [check("correo", "El correo es obligatorio").isEmail(), validateFields],
+  [
+    (check("correo", "El correo es obligatorio").not().isEmpty(),
+    validateFields),
+  ],
+  [
+    check("correo", "El formato de correo no es válido").isEmail(),
+    validateFields,
+  ],
   [
     check("apartamento", "El apartamento es obligatorio").not().isEmpty(),
     validateFields,

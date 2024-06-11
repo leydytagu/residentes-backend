@@ -185,3 +185,30 @@ export const cambioContrasena = async (req: CustomRequest, res: Response) => {
     });
   }
 };
+
+//Renovar token
+
+export const renewToken = async (req: CustomRequest, res: Response) => {
+  const id = req._id;
+
+  try {
+    if (typeof id === "undefined") throw new Error("No existe el id");
+
+    const usuario = await UsuarioModel.findById(id);
+    // Generar el token
+    const token = await generateJWT(id.toString());
+
+    res.json({
+      ok: true,
+      token,
+      usuario,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(401).json({
+      ok: false,
+      error,
+      msg: "Hable con el administrador",
+    });
+  }
+};

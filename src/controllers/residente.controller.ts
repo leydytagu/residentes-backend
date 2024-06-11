@@ -30,8 +30,10 @@ export const crearResidente = async (req: Request, res: Response) => {
       ...body,
     });
     //Encriptar contrasena
-    const salt = bcrypt.genSaltSync(10);
-    newResidente.password = bcrypt.hashSync(contrasena, salt);
+    if (contrasena) {
+      const salt = bcrypt.genSaltSync(10);
+      newResidente.password = bcrypt.hashSync(contrasena, salt);
+    }
 
     const residenteCreado = await newResidente.save();
 
