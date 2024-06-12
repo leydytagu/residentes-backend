@@ -10,7 +10,7 @@ import { config } from "../config/config";
 const environment = config[process.env.NODE_ENV || "desarrollo"];
 
 export const contacto = async (req: Request, resp: Response) => {
-  const { residente } = req.body;
+  const { residente, asunto, mensaje } = req.body;
 
   try {
     const templatePath = path.join(__dirname, "../templates/contacto.html");
@@ -18,8 +18,8 @@ export const contacto = async (req: Request, resp: Response) => {
     const emailTemplate = fs.readFileSync(templatePath, "utf8");
 
     const personalizarEmail = emailTemplate
-      .replace("{{name}}", "Tatiana")
-      .replace("{{token}}", "");
+      .replace("{{asunto}}", asunto)
+      .replace("{{mensaje}}", mensaje);
 
     sendEmail(
       "leydy.tarazona@gmail.com",
