@@ -76,8 +76,8 @@ export const olvidoContrasena = async (req: Request, resp: Response) => {
 
   try {
     const existeUsuario = await UsuarioModel.findOne({
-      email,
-      numeroDocumento,
+      correo: email,
+      identificacion: numeroDocumento,
     });
     if (!existeUsuario) {
       resp.status(400).json({

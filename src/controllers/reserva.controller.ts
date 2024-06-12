@@ -85,10 +85,10 @@ export const getReservas = async (req: Request, res: Response) => {
 export const getUnaReserva = async (req: Request, res: Response) => {
   try {
     const id = req.params.id;
-    const usuario = await ReservaModel.findById({ _id: id });
+    const reserva = await ReservaModel.findById({ _id: id });
     res.status(200).json({
       ok: true,
-      usuario,
+      reserva,
     });
   } catch (error) {
     res.status(400).json({

@@ -51,10 +51,10 @@ export const getServicio = async (req: Request, res: Response) => {
 export const getUnServicio = async (req: Request, res: Response) => {
   try {
     const id = req.params.id;
-    const usuario = await ServicioModel.findById({ _id: id });
+    const servicio = await ServicioModel.findById({ _id: id });
     res.status(200).json({
       ok: true,
-      usuario,
+      servicio,
     });
   } catch (error) {
     res.status(400).json({

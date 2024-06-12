@@ -5,7 +5,7 @@ interface ServicioInterface {
   descripcion: string;
   apertura: string;
   cierre: string;
-  dias: string;
+  dias: string[];
   encargado: string;
   estado: boolean;
 
@@ -32,7 +32,7 @@ const ServicioSchema = new Schema<ServicioInterface>({
     required: true,
   },
   dias: {
-    type: String,
+    type: [String],
     required: true,
   },
   encargado: {

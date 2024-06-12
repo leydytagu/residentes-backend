@@ -5,11 +5,13 @@ import residenteRoutes from "./routes/residente.route";
 import servicioRoutes from "./routes/servicio.route";
 import reservasRoutes from "./routes/reservas.route";
 import authRoutes from "./routes/auth.route";
+import contactoRoute from "./routes/contacto.route";
 
 class Server {
   private app: Application;
   private port: string;
   private apiPaths = {
+    contacto: "/api/v1/contacto",
     residente: "/api/v1/residente",
     servicio: "/api/v1/servicio",
     reserva: "/api/v1/reserva",
@@ -46,6 +48,7 @@ class Server {
   }
 
   routes(): void {
+    this.app.use(this.apiPaths.contacto, contactoRoute);
     this.app.use(this.apiPaths.residente, residenteRoutes);
     this.app.use(this.apiPaths.servicio, servicioRoutes);
     this.app.use(this.apiPaths.reserva, reservasRoutes);

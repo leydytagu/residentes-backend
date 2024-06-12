@@ -23,10 +23,11 @@ const router = Router();
 router.post(
   "/",
   [
-    check("email", "El email es obligatorio").isEmail(),
+    check("email", "El email es obligatorio").not().isEmpty(),
     check("password", "El password de documento es obligatorio")
       .not()
       .isEmpty(),
+    check("email", "El email no es válido").isEmail(),
     validateFields,
   ],
   login
